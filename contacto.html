@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | COVAS - Comercializadora Vascular</title>
+    <meta name="description" content="Contáctenos para más información sobre nuestros productos y servicios médicos">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="img/" alt="Logo COVAS" onerror="this.style.display='none'">
+                <h1>COVAS</h1>
+            </a>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero hero-internal">
+        <div class="hero-content">
+            <h1>Contáctenos</h1>
+            <p>Estamos aquí para atender sus necesidades de equipo médico</p>
+        </div>
+    </section>
+
+    <!-- INFORMACIÓN DE CONTACTO -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="card fade-in text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📍</div>
+                    <h3 class="card-title">Dirección</h3>
+                    <p>Monterrey, Nuevo León<br>México</p>
+                </div>
+
+                <div class="card fade-in text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📞</div>
+                    <h3 class="card-title">Teléfono</h3>
+                    <p><a href="tel:+528112345678" style="color: var(--primary-color); text-decoration: none;">+52 (81) 1234-5678</a></p>
+                </div>
+
+                <div class="card fade-in text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✉️</div>
+                    <h3 class="card-title">Email</h3>
+                    <p><a href="mailto:info@covas.com.mx" style="color: var(--primary-color); text-decoration: none;">info@covas.com.mx</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO -->
+    <section class="section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title">Envíenos un Mensaje</h2>
+                <p class="section-subtitle">Complete el formulario y nos pondremos en contacto con usted a la brevedad</p>
+
+                <div class="card fade-in">
+                    <form id="formContacto" data-validate>
+                        <div class="grid grid-2" style="gap: 1.5rem;">
+                            <div class="form-group">
+                                <label class="form-label">Nombre completo *</label>
+                                <input type="text" id="nombre" class="form-control" placeholder="Juan Pérez" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Empresa u Organización</label>
+                                <input type="text" id="empresa" class="form-control" placeholder="Hospital General">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-2" style="gap: 1.5rem;">
+                            <div class="form-group">
+                                <label class="form-label">Correo electrónico *</label>
+                                <input type="email" id="correo" class="form-control" placeholder="correo@ejemplo.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Teléfono *</label>
+                                <input type="tel" id="telefono" class="form-control" placeholder="(81) 1234-5678" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Consulta *</label>
+                            <select id="tipoConsulta" class="form-control" required>
+                                <option value="">Seleccione una opción</option>
+                                <option value="cotizacion">Solicitud de Cotización</option>
+                                <option value="informacion">Información de Productos</option>
+                                <option value="servicio">Servicio al Cliente</option>
+                                <option value="distribuidor">Convertirse en Distribuidor</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Mensaje *</label>
+                            <textarea id="mensaje" class="form-control" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+
+                    <div id="msgConfirmacion" style="display: none; margin-top: 1.5rem; padding: 1rem; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
+                        ✓ Mensaje enviado correctamente. Nos pondremos en contacto pronto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIOS -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Horarios de Atención</h2>
+            <div style="max-width: 600px; margin: 2rem auto;">
+                <div class="card text-center">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;">📅 Lunes a Viernes</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">8:00 AM - 11:00 PM</p>
+                    <p style="color: #666; margin-top: 1rem;">* Tiempo del Centro de México</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPA (Opcional) -->
+
+    <section class="section">
+
+        <div class="container">
+            <h2 class="section-title">Nuestra Ubicación</h2>
+            <div class="fade-in" style="max-width: 1000px; margin: 0 auto;">
+                <!-- Para agregar Google Maps, reemplace este div con:-->
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.1050039790716!2d-100.34684039999999!3d25.6678137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bf27a6c4ee5d%3A0x6e434a57c57c9cea!2sCovas!5e0!3m2!1ses-419!2smx!4v1763457823987!5m2!1ses-419!2smx"
+                    width="100%" height="400" style="border:0; border-radius: 15px; box-shadow: var(--shadow-md);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>¿Prefiere hablar con nosotros?</h2>
+        <p>Llámenos directamente y con gusto le atenderemos</p>
+        <a href="tel:+528128982209" class="btn btn-secondary">📞 Llamar Ahora</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Comercializadora Vascular (COVAS) - Todos los derechos reservados | Monterrey, Nuevo León, México</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

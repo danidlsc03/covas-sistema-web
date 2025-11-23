@@ -1,0 +1,9 @@
+# Ignorar carpetas pesadas de librerías
+node_modules/
+
+# Ignorar archivos de secretos y configuración local
+.env
+
+# Ignorar archivos basura del sistema
+.DS_Store
+Thumbs.db

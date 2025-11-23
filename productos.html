@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | COVAS - Comercializadora Vascular</title>
+    <meta name="description" content="Catálogo de productos médicos especializados de COVAS">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="img/" alt="Logo COVAS" onerror="this.style.display='none'">
+                <h1>COVAS</h1>
+            </a>
+
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="productos.html" class="active">Productos</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero hero-internal">
+        <div class="hero-content">
+            <h1>Nuestros Productos</h1>
+            <p>Ofrecemos una amplia gama de equipo médico especializado, garantizando calidad y seguridad</p>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <input type="text" id="search-input" class="form-control" placeholder="🔍 Buscar productos...">
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+                <button class="btn btn-outline active" data-filter="all">Todos</button>
+                <button class="btn btn-outline" data-filter="quirurgico">Quirúrgico</button>
+                <button class="btn btn-outline" data-filter="vascular">Vascular</button>
+                <button class="btn btn-outline" data-filter="consumibles">Consumibles</button>
+                <button class="btn btn-outline" data-filter="curacion">Curación</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-3" id="productos-grid">
+                <p style="text-align:center; grid-column: 1/-1; color: #666;">Cargando catálogo...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Certificaciones y Garantía de Calidad</h2>
+            <div class="grid grid-4">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✓</div>
+                    <h3>Certificación FDA</h3>
+                    <p>Productos aprobados por la FDA de Estados Unidos</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✓</div>
+                    <h3>COFEPRIS</h3>
+                    <p>Cumplimiento normativo mexicano garantizado</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✓</div>
+                    <h3>ISO 13485</h3>
+                    <p>Sistemas de gestión de calidad certificados</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✓</div>
+                    <h3>CE Mark</h3>
+                    <p>Certificación europea de dispositivos médicos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>¿No encuentra lo que busca?</h2>
+        <p>Contáctenos y con gusto le ayudaremos a encontrar el producto que necesita</p>
+        <a href="contacto.html" class="btn btn-secondary">Contactar Ahora</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Comercializadora Vascular (COVAS) - Todos los derechos reservados | Monterrey, Nuevo León, México</p>
+    </footer>
+
+    <div id="modalDetalle" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="cerrarModalDetalle()">&times;</button>
+
+            <div class="modal-body">
+                <div class="modal-img-container">
+                    <img id="m_imagen" src="" alt="Producto">
+                </div>
+
+                <div class="modal-info">
+                    <span id="m_categoria" class="badge-categoria">Categoría</span>
+                    <h2 id="m_titulo">Nombre del Producto</h2>
+
+                    <div id="m_precio_container" style="margin-top: 1rem;">
+                        <span class="precio-label" style="font-weight:bold; color:#666;">Precio: </span>
+                        <span id="m_precio" class="precio-valor">$0.00</span>
+                    </div>
+
+                    <div class="descripcion-completa">
+                        <h4 style="margin-bottom:0.5rem; color:#333;">Descripción:</h4>
+                        <p id="m_descripcion">...</p>
+                    </div>
+
+                    <div class="caracteristicas-container">
+                        <h4 style="margin-bottom:0.5rem; color:#333;">Características:</h4>
+                        <ul id="m_caracteristicas">
+                        </ul>
+                    </div>
+
+                    <div id="m_boton_wa" class="modal-actions">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/productos.js"></script>
+</body>
+
+</html>

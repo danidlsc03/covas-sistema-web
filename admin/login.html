@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | COVAS</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-admin">
+                    <img src="../img/" alt="Logo COVAS" onerror="this.style.display='none'">
+                    <h1>COVAS</h1>
+                </div>
+                <h2>Panel Administrativo</h2>
+                <p>Ingrese sus credenciales para continuar</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <div class="input-with-icon">
+                        <span class="icon">👤</span>
+                        <input type="text" id="username" class="form-control" placeholder="Ingrese su usuario" required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="input-with-icon">
+                        <span class="icon">🔒</span>
+                        <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="remember">
+                        <span>Recordarme</span>
+                    </label>
+                    <a href="#" class="forgot-link">¿Olvidó su contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <span>Iniciar Sesión</span>
+                    <span class="arrow">→</span>
+                </button>
+
+                <div id="loginError" class="error-message" style="display: none;">
+                    <span>⚠️</span> Usuario o contraseña incorrectos
+                </div>
+            </form>
+
+            <div class="login-footer">
+                <p>© 2025 COVAS - Sistema Administrativo</p>
+            </div>
+        </div>
+
+        <div class="login-info">
+            <h3>Bienvenido al Panel Administrativo</h3>
+            <ul>
+                <li>✓ Gestión de mensajes de contacto</li>
+                <li>✓ Administración de productos</li>
+                <li>✓ Dashboard con estadísticas</li>
+                <li>✓ Control total del catálogo</li>
+            </ul>
+
+        </div>
+
+        <script src="js/admin.js"></script>
+        <script>
+            // Verificar que API_URL esté definida
+            console.log('API_URL:', API_URL);
+
+            // Script específico para login
+            document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const errorMsg = document.getElementById('loginError');
+                const submitButton = this.querySelector('button[type="submit"]');
+
+                // Deshabilitar botón
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<span>Iniciando sesión...</span>';
+
+                // Debug: mostrar URL completa
+                console.log('Intentando login en:', `${API_URL}/auth/login`);
+
+                try {
+                    const response = await fetch(`${API_URL}/auth/login`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username,
+                            password
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        // Guardar token
+                        localStorage.setItem('adminToken', data.token);
+
+                        // Ocultar error
+                        errorMsg.style.display = 'none';
+
+                        // Mostrar mensaje de éxito
+                        submitButton.innerHTML = '<span>✓ Ingresando...</span>';
+                        submitButton.style.background = '#28a745';
+
+                        // Redirigir al panel
+                        setTimeout(() => {
+                            window.location.href = 'panel.html';
+                        }, 500);
+                    } else {
+                        // Mostrar error
+                        errorMsg.textContent = `⚠️ ${data.message || 'Credenciales incorrectas'}`;
+                        errorMsg.style.display = 'block';
+
+                        // Limpiar campo de contraseña
+                        document.getElementById('password').value = '';
+                        document.getElementById('password').focus();
+
+                        // Rehabilitar botón
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = '<span>Iniciar Sesión</span><span class="arrow">→</span>';
+                    }
+                } catch (error) {
+                    console.error('Error en login:', error);
+                    errorMsg.textContent = '⚠️ Error de conexión. Verifica que el servidor esté encendido.';
+                    errorMsg.style.display = 'block';
+
+                    // Rehabilitar botón
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<span>Iniciar Sesión</span><span class="arrow">→</span>';
+                }
+            });
+
+            // Verificar si ya está logueado
+            const token = localStorage.getItem('adminToken');
+            if (token) {
+                // Verificar si el token es válido
+                fetch(`${API_URL}/auth/verificar`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = 'panel.html';
+                        }
+                    })
+                    .catch(() => {
+                        // Token inválido, eliminar
+                        localStorage.removeItem('adminToken');
+                    });
+            }
+        </script>
+</body>
+
+</html>

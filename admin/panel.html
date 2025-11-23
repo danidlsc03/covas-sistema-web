@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin | COVAS</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="admin-panel">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-admin">
+                <img src="../img/" alt="Logo COVAS" onerror="this.style.display='none'">
+                <h2>COVAS Admin</h2>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#mensajes" class="nav-item" data-section="mensajes">
+                <span class="icon">✉️</span>
+                <span>Mensajes</span>
+                <span class="badge" id="mensajesBadge">5</span>
+            </a>
+            <a href="#productos" class="nav-item" data-section="productos">
+                <span class="icon">📦</span>
+                <span>Productos</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <p class="user-name" id="adminUserName">Admin</p>
+                    <p class="user-role">Administrador</p>
+                </div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">
+                <span>🚪</span> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="content-header">
+
+            <button id="mobileMenuBtn" class="btn-icon mobile-only">
+        ☰
+    </button>
+        </header>
+        <header class="content-header">
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="header-actions">
+                <span class="date" id="currentDate"></span>
+                <a href="../index.html" class="btn-view-site" target="_blank">
+                    <span>🌐</span> Ver Sitio
+                </a>
+            </div>
+        </header>
+
+        <!-- DASHBOARD SECTION -->
+        <section id="section-dashboard" class="content-section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">✉️</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Mensajes Nuevos</p>
+                        <h3 class="stat-value" id="statMensajes">5</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Total Productos</p>
+                        <h3 class="stat-value" id="statProductos">6</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👁️</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Visitas Hoy</p>
+                        <h3 class="stat-value" id="statVisitas">...</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-info">
+                        <p class="stat-label">Conversión</p>
+                        <h3 class="stat-value" id="statConversion">...</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="recent-activity">
+                    <h3>Actividad Reciente</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-icon">✉️</span>
+                            <div class="activity-details">
+                                <p><strong>Nuevo mensaje</strong> de Juan Pérez</p>
+                                <span class="activity-time">Hace 5 minutos</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">✉️</span>
+                            <div class="activity-details">
+                                <p><strong>Nuevo mensaje</strong> de Hospital Regional</p>
+                                <span class="activity-time">Hace 1 hora</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">✉️</span>
+                            <div class="activity-details">
+                                <p><strong>Nuevo mensaje</strong> de Clínica Santa María</p>
+                                <span class="activity-time">Hace 2 horas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENSAJES SECTION -->
+        <section id="section-mensajes" class="content-section">
+            <div class="section-header">
+                <!-- <h2>Mensajes de Contacto</h2>-->
+                <div class="section-actions">
+                    <input type="text" class="search-input" id="searchMensajes" placeholder="🔍 Buscar mensajes...">
+                    <button class="btn-secondary" id="deleteAllMensajes">Eliminar Todos</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table" id="mensajesTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllMensajes"></th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Empresa</th>
+                            <th>Teléfono</th>
+                            <th>Tipo Consulta</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mensajesTableBody">
+                        <!-- Se llenará dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- PRODUCTOS SECTION -->
+        <section id="section-productos" class="content-section">
+            <div class="section-header">
+                <!--<h2>Gestión de Productos</h2>-->
+                <div class="section-actions">
+                    <input type="text" class="search-input" id="searchProductos" placeholder="🔍 Buscar productos...">
+                    <button class="btn-primary" id="btnNuevoProducto">+ Nuevo Producto</button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productosGrid">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL VER MENSAJE -->
+    <div id="modalVerMensaje" class="modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Detalles del Mensaje</h3>
+                <button class="modal-close" data-modal="modalVerMensaje">&times;</button>
+            </div>
+            <div class="modal-body" id="mensajeDetalles">
+                <!-- Se llenará dinámicamente -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" data-modal="modalVerMensaje">Cerrar</button>
+                <button class="btn-danger" id="eliminarMensajeActual">Eliminar Mensaje</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PRODUCTO (Agregar/Editar) -->
+    <div id="modalProducto" class="modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="modalProductoTitle">Nuevo Producto</h3>
+                <button class="modal-close" data-modal="modalProducto">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productoForm">
+                    <input type="hidden" id="productoId">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre del Producto *</label>
+                            <input type="text" id="productoNombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Categoría *</label>
+                            <select id="productoCategoria" class="form-control" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="quirurgico">Quirúrgico</option>
+                                <option value="vascular">Vascular</option>
+                                <option value="consumibles">Consumibles</option>
+                                <option value="curacion">Curación</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción *</label>
+                        <textarea id="productoDescripcion" class="form-control" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Características (una por línea)</label>
+                        <textarea id="productoCaracteristicas" class="form-control" rows="4" placeholder="Ejemplo:&#10;Certificación FDA&#10;Material biocompatible&#10;Diferentes calibres"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>URL de Imagen</label>
+                            <input type="text" id="productoImagen" class="form-control" placeholder="img/producto.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label>Emoji Alternativo</label>
+                            <input type="text" id="productoEmoji" class="form-control" placeholder="🏥" maxlength="2">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Precio (opcional)</label>
+                        <input type="number" id="productoPrecio" class="form-control" step="0.01" placeholder="0.00">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" data-modal="modalProducto">Cancelar</button>
+                <button class="btn-primary" id="guardarProducto">Guardar Producto</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
