@@ -11,7 +11,7 @@ let productoActualId = null;
 
 // Configuración de la API (GLOBAL)
 // ¡USA ESTA LÍNEA!
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://covas-api.onrender.com/api';
 
 // Función para obtener el token
 function getToken() {

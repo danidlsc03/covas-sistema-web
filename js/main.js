@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 try {
                     // ¡La llamada FETCH a tu backend!
-                    const response = await fetch('http://localhost:5000/api/mensajes', {
+                    const response = await fetch('https://covas-api.onrender.com/api/mensajes', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

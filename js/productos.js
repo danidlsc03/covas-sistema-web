@@ -4,7 +4,7 @@
    ========================================== */
 
 // Configuración de la API
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://covas-api.onrender.com/api';
 
 // ⚙️ CONFIGURACIÓN DE WHATSAPP
 const CONFIG_WHATSAPP = {
