@@ -4,7 +4,7 @@
 
 const jwt = require('jsonwebtoken');
 // Usamos tu corrección con minúscula, ¡perfecto!
-const Usuario = require('../models/usuario');
+const Usuario = require('../models/Usuario');
 
 // Verificar token JWT
 const verificarToken = async(req, res, next) => {
